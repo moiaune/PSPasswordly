@@ -1,3 +1,59 @@
+<#
+.SYNOPSIS
+Generates a new password.
+.DESCRIPTION
+This function will generate passwords based on parameters. It can generate either a random string or a string based on words concatenated.
+.PARAMETER Word
+Will generate a string based on words concatenated.
+.PARAMETER Delimiter
+Set's delimiter between words. Default "-". Only applicable if -Word.
+.PARAMETER NumberOfWords
+Number of words to include in the output. Default 3. Only applicable if -Word.
+.PARAMETER WordlistPath
+Path to a textfile with custom words. Words must be line separated.
+.PARAMETER String
+Will generate a random string based on parameters.
+.PARAMETER Upper
+Will include UPPERCASE letters. Only applicable if -String.
+.PARAMETER Lower
+Will include lowercase letters. Only applicable if -String.
+.PARAMETER Digits
+Will include digits. Only applicable if -String.
+.PARAMETER Symbols
+Will include symbols (@!-*#%). Only applicable if -String.
+.PARAMETER Length
+Number of characters to include in the random string. Only applicable if -String.
+.PARAMETER Prefix
+Will include a random number between 1111-9999 at the begining.
+.PARAMETER Suffix
+Will include a random number between 1111-9999 at the end.
+.PARAMETER Count
+Number of passwords to generate.
+.EXAMPLE
+Default action is 3 words concatenated together with "-".
+
+PS /> New-Passwordly
+
+Password
+--------
+Governor-Opinion-Gasp
+.EXAMPLE
+PS /> New-Passwordly -NumberOfWords 3 -Count 3 -Prefix -Suffix -Delimiter "//"
+
+Password
+--------
+9192//Overcharge//Mourning//Increase//5169
+6989//Increase//Gasp//Mourning//8013
+4236//Safety//Increase//Comprehensive//5015
+.EXAMPLE
+PS /> "Powershell", "Microsoft", "PSGallery", "Awesome" | Out-File -Path "CustomWordlist.txt"
+PS /> Invoke-Passwordly -WordlistPath ./CustomWordlist.txt
+
+Password
+--------
+Microsoft-Powershell-Awesome
+
+#>
 Function Invoke-Passwordly {
     [CmdletBinding(DefaultParameterSetName = "Word")]
     param (
@@ -97,7 +153,7 @@ Function Invoke-Passwordly {
                 }
 
                 $Obj = [PSCustomObject]@{
-                    Password = $Words -join "-"
+                    Password = $Words -join ($Delimiter)
                 }
 
                 $Obj
