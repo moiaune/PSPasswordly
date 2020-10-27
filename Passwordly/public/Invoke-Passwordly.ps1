@@ -1,4 +1,4 @@
-Function New-Passwordly {
+Function Invoke-Passwordly {
     [CmdletBinding(DefaultParameterSetName = "Word")]
     param (
         [Parameter(ParameterSetName="Word")]
