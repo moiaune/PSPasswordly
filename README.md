@@ -6,6 +6,14 @@ A simple password generator written in Powershell.
 
 Passwordly is a simple password generator written in Powershell that can generate either random strings or a list of words concatenated together.
 
+## Installation
+
+The module can be installed from [PSGallery](https://www.powershellgallery.com/packages/Passwordly).
+
+```
+Install-Module -Name Passwordly 
+```
+
 ## Examples
 
 ```
@@ -26,9 +34,9 @@ PS /> New-Passwordly -NumberOfWords 3 -Count 3 -Prefix -Suffix -Delimiter "//"
 
 Password
 --------
-9835-Safety-Attachment-Mourning-3264
-1135-Gasp-Thaw-Comprehensive-5268
-8397-Infinite-Excuse-Opinion-6151
+9192//Overcharge//Mourning//Increase//5169
+6989//Increase//Gasp//Mourning//8013
+4236//Safety//Increase//Comprehensive//5015
 
 PS /> New-Passwordly -String -Upper -Lower -Digits -Symbols -Prefix -Suffix -Length 16 -Count 3
 
