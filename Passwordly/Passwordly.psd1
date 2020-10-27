@@ -9,13 +9,13 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = 'Passwordly'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.3'
 
 # Supported PSEditions
-# CompatiblePSEditions = @()
+CompatiblePSEditions = @("Desktop", "Core")
 
 # ID used to uniquely identify this module
 GUID = '3956e2d5-7175-4470-a3d5-f4f2b4ea069e'
@@ -33,7 +33,7 @@ Copyright = '(c) Mads Moi-Aune. All rights reserved.'
 Description = 'A simple password generator'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = '5.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
