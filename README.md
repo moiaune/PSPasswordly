@@ -8,7 +8,7 @@ Passwordly is a simple password generator written in Powershell that can generat
 
 ## Examples
 
-```powershell
+```
 PS / > Import-Module Passwordly
 PS /> New-Passwordly
 
