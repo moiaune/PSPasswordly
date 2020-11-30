@@ -32,13 +32,13 @@ Number of passwords to generate.
 .EXAMPLE
 Default action is 3 words concatenated together with "-".
 
-PS /> New-Passwordly
+PS /> Invoke-Passwordly
 
 Password
 --------
 Governor-Opinion-Gasp
 .EXAMPLE
-PS /> New-Passwordly -NumberOfWords 3 -Count 3 -Prefix -Suffix -Delimiter "//"
+PS /> Invoke-Passwordly -NumberOfWords 3 -Count 3 -Prefix -Suffix -Delimiter "//"
 
 Password
 --------
@@ -57,43 +57,43 @@ Microsoft-Powershell-Awesome
 Function Invoke-Passwordly {
     [CmdletBinding(DefaultParameterSetName = "Word")]
     param (
-        [Parameter(ParameterSetName="Word")]
+        [Parameter(ParameterSetName = "Word")]
         [switch]
         $Word,
 
-        [Parameter(ParameterSetName="Word")]
+        [Parameter(ParameterSetName = "Word")]
         [String]
         $Delimiter = "-",
 
-        [Parameter(ParameterSetName="Word")]
+        [Parameter(ParameterSetName = "Word")]
         [int]
         $NumberOfWords = 3,
 
-        [Parameter(ParameterSetName="Word")]
+        [Parameter(ParameterSetName = "Word")]
         [String]
         $WordlistPath = "",
 
-        [Parameter(ParameterSetName="String")]
+        [Parameter(ParameterSetName = "String")]
         [switch]
         $String,
 
-        [Parameter(ParameterSetName="String")]
+        [Parameter(ParameterSetName = "String")]
         [Switch]
         $Upper,
 
-        [Parameter(ParameterSetName="String")]
+        [Parameter(ParameterSetName = "String")]
         [Switch]
         $Lower,
 
-        [Parameter(ParameterSetName="String")]
+        [Parameter(ParameterSetName = "String")]
         [Switch]
         $Digits,
 
-        [Parameter(ParameterSetName="String")]
+        [Parameter(ParameterSetName = "String")]
         [Switch]
         $Symbols,
 
-        [Parameter(ParameterSetName="String")]
+        [Parameter(ParameterSetName = "String")]
         [int]
         $Length = 16,
 
@@ -117,9 +117,9 @@ Function Invoke-Passwordly {
         
         if ($PSCmdlet.ParameterSetName -eq "String") {
             $KeyspaceOptions = @{
-                Upper = $Upper
-                Lower = $Lower
-                Digits = $Digits
+                Upper   = $Upper
+                Lower   = $Lower
+                Digits  = $Digits
                 Symbols = $Symbols
             }
 
@@ -134,11 +134,11 @@ Function Invoke-Passwordly {
             foreach ($x in 1..$Count) {
                 $Words = New-Object -TypeName "System.Collections.ArrayList"
 
-                foreach($y in 1..$NumberOfWords) {
+                foreach ($y in 1..$NumberOfWords) {
 
                     do {
                         $RandomWord = ConvertTo-Capitalized -Value $Wordlist[(Get-Random -Max $Wordlist.Length)]
-                    } while($Words.Contains($RandomWord))
+                    } while ($Words.Contains($RandomWord))
                     
                     $Words.Add($RandomWord) | Out-Null
 

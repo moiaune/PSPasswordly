@@ -11,26 +11,26 @@ Passwordly is a simple password generator written in Powershell that can generat
 The module can be installed from [PSGallery](https://www.powershellgallery.com/packages/Passwordly).
 
 ```
-Install-Module -Name Passwordly 
+Install-Module -Name PSPasswordly 
 ```
 
 ## Examples
 
 ```
-PS / > Import-Module Passwordly
-PS /> New-Passwordly
+PS / > Import-Module PSPasswordly
+PS /> Invoke-Passwordly
 
 Password
 --------
 Governor-Opinion-Gasp
 
-PS /> New-Passwordly -NumberOfWords 5 -Suffix
+PS /> Invoke-Passwordly -NumberOfWords 5 -Suffix
 
 Password
 --------
 Governor-Empirical-Infinite-Mourning-Characteristic-2907
 
-PS /> New-Passwordly -NumberOfWords 3 -Count 3 -Prefix -Suffix -Delimiter "//"
+PS /> Invoke-Passwordly -NumberOfWords 3 -Count 3 -Prefix -Suffix -Delimiter "//"
 
 Password
 --------
@@ -38,7 +38,7 @@ Password
 6989//Increase//Gasp//Mourning//8013
 4236//Safety//Increase//Comprehensive//5015
 
-PS /> New-Passwordly -String -Upper -Lower -Digits -Symbols -Prefix -Suffix -Length 16 -Count 3
+PS /> Invoke-Passwordly -String -Upper -Lower -Digits -Symbols -Prefix -Suffix -Length 16 -Count 3
 
 Password
 --------
