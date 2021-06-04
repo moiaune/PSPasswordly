@@ -114,8 +114,15 @@ Function Invoke-Passwordly {
         if ($PSCmdlet.ParameterSetName -eq "Word") {
             $Wordlist = Initialize-Wordlist -Path $WordlistPath
         }
-        
+
         if ($PSCmdlet.ParameterSetName -eq "String") {
+            if (-not ($Upper.IsPresent) -and -not ($Lower.IsPresent) -and -not ($Digits.IsPresent) -and -not ($Symbols.IsPresent)) {
+                $Upper = $true
+                $Lower = $true
+                $Digits = $true
+                $Symbols = $true
+            }
+
             $KeyspaceOptions = @{
                 Upper   = $Upper
                 Lower   = $Lower
@@ -139,7 +146,7 @@ Function Invoke-Passwordly {
                     do {
                         $RandomWord = ConvertTo-Capitalized -Value $Wordlist[(Get-Random -Max $Wordlist.Length)]
                     } while ($Words.Contains($RandomWord))
-                    
+
                     $Words.Add($RandomWord) | Out-Null
 
                 }
@@ -167,7 +174,7 @@ Function Invoke-Passwordly {
 
                 do {
                     $Chars = New-Object -TypeName "System.Collections.ArrayList"
-                    
+
                     foreach ($y in 1..$Length) {
                         $Chars.Add($Keyspace[(Get-Random -Max $Keyspace.Length)]) | Out-Null
                     }
@@ -185,7 +192,7 @@ Function Invoke-Passwordly {
                 $Obj = [PSCustomObject]@{
                     Password = $Chars -join ""
                 }
-                
+
                 $Obj
             }
         }
@@ -193,6 +200,6 @@ Function Invoke-Passwordly {
     }
 
     end {
-        
+
     }
 }
